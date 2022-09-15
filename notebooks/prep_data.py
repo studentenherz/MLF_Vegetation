@@ -42,27 +42,7 @@ def preapare_data(data : pd.DataFrame) -> tuple[np.ndarray, pd.DataFrame]:
 
 	# Separete the target
 	target = data['dosel_forestal']
-	data.drop(['dosel_forestal'], axis=1, inplace=True)
-
-	# Separate the categorical features
-	cat_features = [
-		'clase_area_silvestre_1',
-		'clase_area_silvestre_2',
-		'clase_area_silvestre_3',
-		'clase_area_silvestre_4',
-		'clase_suelo_10',
-		'clase_suelo_39',
-		'clase_suelo_38',
-		'clase_suelo'
-		]
-	num_data = data.drop(cat_features, axis=1)
-	cat_data = data[cat_features]
-
-	# Scale numerical features
-	scaler = StandardScaler()
-	scaled_num_data = scaler.fit_transform(num_data)
-
-	prep_data = np.concatenate([scaled_num_data, cat_data.to_numpy()], axis=1)
+	prep_data = data.drop(['dosel_forestal'], axis=1).to_numpy()
 
 	return prep_data, target
 
