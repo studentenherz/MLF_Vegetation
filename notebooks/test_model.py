@@ -76,4 +76,4 @@ if __name__ == '__main__':
 	tprec = precision_score(target.to_numpy(), prediction, average='macro')
 	trec = recall_score(target.to_numpy(), prediction, average='macro')
 
-	print(f'Accuracy:\t{tacc:.8f}\nPrecision:\t{tprec:.8f}\nRecall:\t\t{trec:.8f}')
+	print(f'Model: {model}\n\nAccuracy:\t{tacc:.8f}\nPrecision:\t{tprec:.8f}\nRecall:\t\t{trec:.8f}')
